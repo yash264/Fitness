@@ -24,6 +24,18 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <script type="module">
+      import {
+        PoseLandmarker,
+        FilesetResolver,
+        DrawingUtils,
+      } from "https://cdn.skypack.dev/@mediapipe/tasks-vision@0.10.0";
+    
+      window.PoseLandmarker = PoseLandmarker;
+      window.FilesetResolver = FilesetResolver;
+      window.DrawingUtils = DrawingUtils;
+    </script>
+    
     <title>React App</title>
   </head>
   <body>

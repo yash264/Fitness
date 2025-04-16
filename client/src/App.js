@@ -1,6 +1,7 @@
 import React from "react";
 import FitnessDetector from './FitnessDetector';
 import FitnessTracker from './FitnessTracker';
+import PushupCounter from "./PushupCounter";
 
 function App() {
 
@@ -13,7 +14,8 @@ function App() {
           welcome to client side.
         </p>
 
-        <FitnessDetector mode="pushup" />
+        {/* <FitnessDetector mode="pushup" /> */}
+        <PushupCounter />
 
         <FitnessTracker />
 

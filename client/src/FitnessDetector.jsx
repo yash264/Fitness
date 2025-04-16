@@ -66,6 +66,7 @@ export default function FitnessDetector({ mode = 'pushup' }) {
             acc[kp.name] = kp;
             return acc;
         }, {});
+        // console.log(keypoints);
 
         const leftShoulder = keypoints['left_shoulder'];
         const leftElbow = keypoints['left_elbow'];
