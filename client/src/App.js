@@ -1,9 +1,9 @@
 import React from "react";
 import PlankHoldTimer from "./PlankHoldCounter";
-import FitnessDetector from './FitnessDetector';
 import FitnessTracker from './FitnessTracker';
 import PushupCounter from "./PushupCounter";
 import BicepCurlCounter from "./BicepCurlCounter";
+import SquatCounter from "./SquatCounter";
 
 function App() {
 
@@ -21,7 +21,7 @@ function App() {
         <BicepCurlCounter/>
         <PlankHoldTimer />
         <FitnessTracker />
-
+        <SquatCounter />
 
       </header>
     </>
