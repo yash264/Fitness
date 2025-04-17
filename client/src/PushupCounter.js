@@ -8,9 +8,12 @@ const PushupCounter = () => {
   const [pushupStage, setPushupStage] = useState("up");
   const lastVideoTime = useRef(-1);
 
+  const pushupCountRef = useRef(0);
+  const pushupStageRef = useRef("up");
+
   const shoulderIndex = 11; // Left shoulder
-  const minYThreshold = 0.45;
-  const maxYThreshold = 0.55;
+  const minYThreshold = 0.30;
+  const maxYThreshold = 0.60;
 
   useEffect(() => {
     const loadPoseLandmarker = async () => {
@@ -84,21 +87,26 @@ const PushupCounter = () => {
               window.PoseLandmarker.POSE_CONNECTIONS
             );
 
-            const shoulderY = landmarks[shoulderIndex].y;
+            const leftShoulderY = landmarks[shoulderIndex].y;
+            const rightShoulderY = landmarks[12].y;
 
-            if (shoulderY > maxYThreshold && pushupStage === "up") {
-              setPushupStage("down");
+            const shoulder = (leftShoulderY + rightShoulderY) / 2;
+            console.log(pushupCountRef.current, shoulder);
+
+            if (shoulder > maxYThreshold && pushupStageRef.current === "up") {
+              pushupStageRef.current = "down";
             }
 
-            if (shoulderY < minYThreshold && pushupStage === "down") {
-              setPushupStage("up");
-              setPushupCount((prev) => prev + 1);
+            if (shoulder < minYThreshold && pushupStageRef.current === "down") {
+              pushupStageRef.current = "up";
+              pushupCountRef.current += 1;
+              setPushupCount(pushupCountRef.current);
             }
 
             // Display count
             ctx.font = "30px Arial";
             ctx.fillStyle = "red";
-            ctx.fillText(`Push-ups: ${pushupCount}`, 10, 40);
+            ctx.fillText(`Push-ups: ${pushupCountRef.current}`, 10, 40);
           }
         });
       }
