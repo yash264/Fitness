@@ -101,17 +101,13 @@ const PlankHoldTimer = () => {
           const a = landmarks[rightAnkle];
 
           const shoulderHipDiff = Math.abs(s.y - h.y);
-          const kneeY = k.y;
-          const ankleY = a.y;
 
           const elbowAngle = getAngle(s, e, h); // Shoulder-Elbow-Hip
           const legAngle = getAngle(h, k, a);   // Hip-Knee-Ankle
 
           const isPlankForm =
-            shoulderHipDiff < 0.20 &&         // torso flat
-            kneeY > h.y &&                    // knees not higher than hips
-            ankleY > k.y &&                   // feet not tucked in
-            elbowAngle > 40 && elbowAngle < 150 &&  // arms straight or bent
+            shoulderHipDiff < 0.30 &&         // torso flat
+            elbowAngle > 50 && elbowAngle < 140 &&  // arms straight or bent
             legAngle > 150;                   // legs straight
 
 
